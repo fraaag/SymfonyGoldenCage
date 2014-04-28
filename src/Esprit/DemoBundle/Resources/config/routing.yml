@@ -1,0 +1,6 @@
+esprit_demo_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: EspritDemoBundle:Default:index }
+Home:
+    pattern:  /home
+    defaults: { _controller: EspritDemoBundle:Default:home }
