@@ -1,7 +1,8 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends 'EspritDemoBundle:Default:home.html.twig' %}
+{% block title %}Inscription{% endblock %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
+{% block body %}
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
-{% endblock fos_user_content %}
+{% endblock body %}

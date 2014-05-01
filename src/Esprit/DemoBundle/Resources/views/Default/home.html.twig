@@ -2,3 +2,7 @@
 {#nom bundle:nom dossir:vue#}
 
 {% extends "EspritDemoBundle::layout.html.twig" %}
+{%block auth %}
+    <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+    <a href="{{ path('fos_user_registration_register') }}">Authentification</a>
+{%endblock %}

@@ -1,6 +1,9 @@
 esprit_demo_homepage:
-    pattern:  /hello/{name}
+    pattern:  /hello/{name
     defaults: { _controller: EspritDemoBundle:Default:index }
 Home:
     pattern:  /home
     defaults: { _controller: EspritDemoBundle:Default:home }
+admin_gest_prest:
+    pattern:  /gest_prest
+    defaults: { _controller: EspritDemoBundle:Default:gest_prest }
