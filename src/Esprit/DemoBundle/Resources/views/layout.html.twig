@@ -31,8 +31,8 @@
                 {% block auth %}
                     {% endblock%}
         	<h1>
-                    <a href="index.html">LauraJohn</a>
-                    <em>Our wedding  Page</em>
+                    <a > </a>
+                    <em>Pour vos mariage</em>
                 </h1>
             
         </div>
@@ -43,7 +43,7 @@
                     	<div class="grid_12">
                         	<nav>
                                 <ul class="menu">
-                                    <li><a class="active" href="index.html">Mariée</a></li>
+                                    <li><a class="active" href="{{ path('liste_prest') }}">Mariée</a></li>
                                     <li><a href="wedding.html">Marie</a></li>
                                     <li><a href="album.html">Réception</a></li>
                                     <li><a href="links.html">Animation</a></li>
@@ -57,16 +57,19 @@
                 </div>
             </div>
         </div>
+            
+       {%block body %}
+
+        {% endblock %}
         
     </header>
     
 	<!--==============================content================================-->
-    <section id="content">
-        {% block body %}
-        
-          
+    
+       {%block ListePrest %}
+
         {% endblock %}
-    </section>
+        
     
 	<!--==============================footer=================================-->
     <footer>
