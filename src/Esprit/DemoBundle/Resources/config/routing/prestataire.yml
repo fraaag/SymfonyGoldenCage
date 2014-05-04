@@ -1,0 +1,30 @@
+produit:
+    pattern:  /
+    defaults: { _controller: "EspritDemoBundle:Prestataire:index" }
+
+produit_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EspritDemoBundle:Prestataire:show" }
+
+produit_new:
+    pattern:  /new
+    defaults: { _controller: "EspritDemoBundle:Prestataire:new" }
+
+produit_create:
+    pattern:  /create
+    defaults: { _controller: "EspritDemoBundle:Prestataire:create" }
+    requirements: { _method: post }
+
+produit_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EspritDemoBundle:Prestataire:edit" }
+
+produit_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EspritDemoBundle:Prestataire:update" }
+    requirements: { _method: post|put }
+
+produit_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EspritDemoBundle:Prestataire:delete" }
+    requirements: { _method: post|delete }

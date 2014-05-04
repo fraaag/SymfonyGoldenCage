@@ -1,0 +1,30 @@
+produit:
+    pattern:  /
+    defaults: { _controller: "EspritDemoBundle:Panier:index" }
+
+produit_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EspritDemoBundle:Panier:show" }
+
+produit_new:
+    pattern:  /new
+    defaults: { _controller: "EspritDemoBundle:Panier:new" }
+
+produit_create:
+    pattern:  /create
+    defaults: { _controller: "EspritDemoBundle:Panier:create" }
+    requirements: { _method: post }
+
+produit_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EspritDemoBundle:Panier:edit" }
+
+produit_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EspritDemoBundle:Panier:update" }
+    requirements: { _method: post|put }
+
+produit_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EspritDemoBundle:Panier:delete" }
+    requirements: { _method: post|delete }

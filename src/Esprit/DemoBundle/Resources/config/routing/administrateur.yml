@@ -1,0 +1,30 @@
+administrateur:
+    pattern:  /
+    defaults: { _controller: "EspritDemoBundle:Administrateur:index" }
+
+administrateur_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EspritDemoBundle:Administrateur:show" }
+
+administrateur_new:
+    pattern:  /new
+    defaults: { _controller: "EspritDemoBundle:Administrateur:new" }
+
+administrateur_create:
+    pattern:  /create
+    defaults: { _controller: "EspritDemoBundle:Administrateur:create" }
+    requirements: { _method: post }
+
+administrateur_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EspritDemoBundle:Administrateur:edit" }
+
+administrateur_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EspritDemoBundle:Administrateur:update" }
+    requirements: { _method: post|put }
+
+administrateur_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EspritDemoBundle:Administrateur:delete" }
+    requirements: { _method: post|delete }

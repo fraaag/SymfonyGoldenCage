@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Esprit\DemoBundle\Entity\Produit" table="produit">
+    <indexes>
+      <index name="FKRec_idProduit" columns="IdPrestataire"/>
+      <index name="FKProd_idCategorie" columns="IdCategorie"/>
+    </indexes>
+    <id name="id" type="integer" column="IdProduit">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomproduit" type="string" column="NomProduit" length="30" nullable="false"/>
+    <field name="photo" type="blob" column="Photo" nullable="false"/>
+    <field name="coutproduit" type="float" column="CoutProduit" precision="10" scale="0" nullable="false"/>
+    <field name="coutsolde" type="float" column="CoutSolde" precision="10" scale="0" nullable="true"/>
+    <field name="descriptionproduit" type="string" column="DescriptionProduit" length="2000" nullable="false"/>
+    <many-to-one field="idprestataire" target-entity="Prestataire">
+      <join-columns>
+        <join-column name="IdPrestataire" referenced-column-name="IdPrestataire"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idcategorie" target-entity="Categorie">
+      <join-columns>
+        <join-column name="IdCategorie" referenced-column-name="IdCategorie"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

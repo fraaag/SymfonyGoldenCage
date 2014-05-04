@@ -161,37 +161,214 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::gest_prestAction',  '_route' => 'admin_gest_prest',);
         }
 
-        if (0 === strpos($pathinfo, '/l')) {
-            // liste_prest
-            if ($pathinfo === '/liste_prest') {
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::liste_prestAction',  '_route' => 'liste_prest',);
+        // liste_prest
+        if ($pathinfo === '/liste_prest') {
+            return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::liste_prestAction',  '_route' => 'liste_prest',);
+        }
+
+        if (0 === strpos($pathinfo, '/administrateur')) {
+            // administrateur
+            if (rtrim($pathinfo, '/') === '/administrateur') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'administrateur');
+                }
+
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::indexAction',  '_route' => 'administrateur',);
             }
 
-            if (0 === strpos($pathinfo, '/log')) {
-                if (0 === strpos($pathinfo, '/login')) {
-                    // fos_user_security_login
-                    if ($pathinfo === '/login') {
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
-                    }
+            // administrateur_show
+            if (preg_match('#^/administrateur/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::showAction',));
+            }
 
-                    // fos_user_security_check
-                    if ($pathinfo === '/login_check') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_fos_user_security_check;
-                        }
+            // administrateur_new
+            if ($pathinfo === '/administrateur/new') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::newAction',  '_route' => 'administrateur_new',);
+            }
 
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
-                    }
-                    not_fos_user_security_check:
-
+            // administrateur_create
+            if ($pathinfo === '/administrateur/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_administrateur_create;
                 }
 
-                // fos_user_security_logout
-                if ($pathinfo === '/logout') {
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::createAction',  '_route' => 'administrateur_create',);
+            }
+            not_administrateur_create:
+
+            // administrateur_edit
+            if (preg_match('#^/administrateur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::editAction',));
+            }
+
+            // administrateur_update
+            if (preg_match('#^/administrateur/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_administrateur_update;
                 }
 
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::updateAction',));
+            }
+            not_administrateur_update:
+
+            // administrateur_delete
+            if (preg_match('#^/administrateur/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_administrateur_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::deleteAction',));
+            }
+            not_administrateur_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/client')) {
+            // client
+            if (rtrim($pathinfo, '/') === '/client') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'client');
+                }
+
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::indexAction',  '_route' => 'client',);
+            }
+
+            // client_show
+            if (preg_match('#^/client/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::showAction',));
+            }
+
+            // client_new
+            if ($pathinfo === '/client/new') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::newAction',  '_route' => 'client_new',);
+            }
+
+            // client_create
+            if ($pathinfo === '/client/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_client_create;
+                }
+
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::createAction',  '_route' => 'client_create',);
+            }
+            not_client_create:
+
+            // client_edit
+            if (preg_match('#^/client/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::editAction',));
+            }
+
+            // client_update
+            if (preg_match('#^/client/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_client_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::updateAction',));
+            }
+            not_client_update:
+
+            // client_delete
+            if (preg_match('#^/client/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_client_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::deleteAction',));
+            }
+            not_client_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/produit')) {
+            // produit
+            if (rtrim($pathinfo, '/') === '/produit') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'produit');
+                }
+
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::indexAction',  '_route' => 'produit',);
+            }
+
+            // produit_show
+            if (preg_match('#^/produit/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::showAction',));
+            }
+
+            // produit_new
+            if ($pathinfo === '/produit/new') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::newAction',  '_route' => 'produit_new',);
+            }
+
+            // produit_create
+            if ($pathinfo === '/produit/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_produit_create;
+                }
+
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::createAction',  '_route' => 'produit_create',);
+            }
+            not_produit_create:
+
+            // produit_edit
+            if (preg_match('#^/produit/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::editAction',));
+            }
+
+            // produit_update
+            if (preg_match('#^/produit/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_produit_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::updateAction',));
+            }
+            not_produit_update:
+
+            // produit_delete
+            if (preg_match('#^/produit/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_produit_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::deleteAction',));
+            }
+            not_produit_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // fos_user_security_login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+                }
+
+                // fos_user_security_check
+                if ($pathinfo === '/login_check') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_fos_user_security_check;
+                    }
+
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+                }
+                not_fos_user_security_check:
+
+            }
+
+            // fos_user_security_logout
+            if ($pathinfo === '/logout') {
+                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
             }
 
         }

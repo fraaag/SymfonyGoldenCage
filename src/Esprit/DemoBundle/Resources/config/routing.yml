@@ -10,3 +10,21 @@ admin_gest_prest:
 liste_prest:
     pattern:  /liste_prest
     defaults: { _controller: EspritDemoBundle:Default:liste_prest }
+
+EspritDemoBundle_administrateur:
+    resource: "@EspritDemoBundle/Resources/config/routing/administrateur.yml"
+    prefix:   /administrateur
+EspritDemoBundle_client:
+    resource: "@EspritDemoBundle/Resources/config/routing/client.yml"
+    prefix:   /client
+    
+EspritDemoBundle_prestataire:
+    resource: "@EspritDemoBundle/Resources/config/routing/prestataire.yml"
+    prefix:   /prestataire
+EspritDemoBundle_panier:
+    resource: "@EspritDemoBundle/Resources/config/routing/panier.yml"
+    prefix:   /panier
+EspritDemoBundle_produit:
+    resource: "@EspritDemoBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit
+

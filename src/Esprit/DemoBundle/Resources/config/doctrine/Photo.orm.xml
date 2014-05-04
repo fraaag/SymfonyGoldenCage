@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Esprit\DemoBundle\Entity\Photo" table="photo">
+    <indexes>
+      <index name="FKPhoto_idGalerie" columns="IdGalerie"/>
+    </indexes>
+    <id name="id" type="integer" column="IdPhoto">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titrephoto" type="string" column="TitrePhoto" length="50" nullable="false"/>
+    <many-to-one field="idgalerie" target-entity="Galeriephoto">
+      <join-columns>
+        <join-column name="IdGalerie" referenced-column-name="IdGalerie"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

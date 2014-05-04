@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Prestataire list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Adresse</th>
+                <th>Adressmail</th>
+                <th>Fax</th>
+                <th>Gsm</th>
+                <th>Login</th>
+                <th>Motdepasse</th>
+                <th>Nomsociete</th>
+                <th>Photo</th>
+                <th>Presentation</th>
+                <th>Siteweb</th>
+                <th>Tel</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('produit_show', { 'id': entity.id }) }}">{{ entity.adresse }}</a></td>
+                <td>{{ entity.adressmail }}</td>
+                <td>{{ entity.fax }}</td>
+                <td>{{ entity.gsm }}</td>
+                <td>{{ entity.login }}</td>
+                <td>{{ entity.motdepasse }}</td>
+                <td>{{ entity.nomsociete }}</td>
+                <td>{{ entity.photo }}</td>
+                <td>{{ entity.presentation }}</td>
+                <td>{{ entity.siteweb }}</td>
+                <td>{{ entity.tel }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('produit_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
