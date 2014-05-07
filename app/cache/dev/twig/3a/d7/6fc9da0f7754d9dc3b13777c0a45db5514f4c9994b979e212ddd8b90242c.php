@@ -123,7 +123,7 @@ class __TwigTemplate_3ad76fc9da0f7754d9dc3b13777c0a45db5514f4c9994b979e212ddd8b9
     <li>
         <a href=\"";
         // line 61
-        echo $this->env->getExtension('routing')->getPath("produit");
+        echo $this->env->getExtension('routing')->getPath("prestataire");
         echo "\">
             Back to the list
         </a>
@@ -131,7 +131,7 @@ class __TwigTemplate_3ad76fc9da0f7754d9dc3b13777c0a45db5514f4c9994b979e212ddd8b9
     <li>
         <a href=\"";
         // line 66
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("prestataire_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
         echo "\">
             Edit
         </a>

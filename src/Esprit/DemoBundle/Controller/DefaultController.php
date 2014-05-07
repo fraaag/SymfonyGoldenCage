@@ -15,6 +15,11 @@ class DefaultController extends Controller
         //nom bundle:folder li ta7t l views:vue
         return $this->render('EspritDemoBundle:Default:home.html.twig', array());
     }
+     public function homeprestataireAction()
+    {
+        //nom bundle:folder li ta7t l views:vue
+        return $this->render('EspritDemoBundle:Default:espaceprestataire.html.twig');
+    }
     public function gest_prestAction()
     {
         //nom bundle:folder li ta7t l views:vue

@@ -58,7 +58,7 @@ class __TwigTemplate_5f7fbeffc7f81d9bdec56b69c92f5d3d0caf4ce9537b4cbd087f288c188
             echo "            <tr>
                 <td><a href=\"";
             // line 27
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("prestataire_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "adresse"), "html", null, true);
             echo "</a></td>
@@ -111,13 +111,13 @@ class __TwigTemplate_5f7fbeffc7f81d9bdec56b69c92f5d3d0caf4ce9537b4cbd087f288c188
                     <li>
                         <a href=\"";
             // line 42
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("prestataire_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
             echo "\">show</a>
                     </li>
                     <li>
                         <a href=\"";
             // line 45
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("prestataire_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
             echo "\">edit</a>
                     </li>
                 </ul>
@@ -136,7 +136,7 @@ class __TwigTemplate_5f7fbeffc7f81d9bdec56b69c92f5d3d0caf4ce9537b4cbd087f288c188
         <li>
             <a href=\"";
         // line 56
-        echo $this->env->getExtension('routing')->getPath("produit_new");
+        echo $this->env->getExtension('routing')->getPath("prestataire_new");
         echo "\">
                 Create a new entry
             </a>

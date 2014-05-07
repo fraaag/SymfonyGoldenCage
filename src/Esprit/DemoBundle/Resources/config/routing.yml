@@ -4,27 +4,87 @@ esprit_demo_homepage:
 Home:
     pattern:  /home
     defaults: { _controller: EspritDemoBundle:Default:home }
+Home_prestataire:
+    pattern:  /homeprestataire
+    defaults: { _controller: EspritDemoBundle:Default:homeprestataire }
 admin_gest_prest:
     pattern:  /gest_prest
     defaults: { _controller: EspritDemoBundle:Default:gest_prest }
 liste_prest:
     pattern:  /liste_prest
     defaults: { _controller: EspritDemoBundle:Default:liste_prest }
+prestataire:
+    pattern:  /prestataire
+    defaults: { _controller:EspritDemoBundle:Prestataire:index }
+prestataire_show:
+    pattern:  /prestataire/show/{id}
+    defaults: { _controller:EspritDemoBundle:Prestataire:show }
+prestataire_edit:
+    pattern:  /prestataire/edit/{id}
+    defaults: { _controller:EspritDemoBundle:Prestataire:edit }
+    
+prestataire_new:
+    pattern:  /prestataire/new
+    defaults: { _controller:EspritDemoBundle:Prestataire:new }
+prestataire_create:
+    pattern:  /prestataire/create
+    defaults: { _controller:EspritDemoBundle:Prestataire:create }
+prestataire_delete:
+    pattern:  /prestataire/delete/{id}
+    defaults: { _controller:EspritDemoBundle:Prestataire:delete }
+prestataire_update:
+    pattern:  /prestataire/update/{id}
+    defaults: { _controller:EspritDemoBundle:Prestataire:update }
+    
+produit:
+    pattern:  /produit
+    defaults: { _controller:EspritDemoBundle:Produit:index }
+produit_show:
+    pattern:  /produit/show/{id}
+    defaults: { _controller:EspritDemoBundle:Produit:show }
+produit_edit:
+    pattern:  /produit/edit/{id}
+    defaults: { _controller:EspritDemoBundle:Produit:edit }
+    
+produit_new:
+    pattern:  /produit/new
+    defaults: { _controller:EspritDemoBundle:Produit:new }
+produit_create:
+    pattern:  /produit/create
+    defaults: { _controller:EspritDemoBundle:Produit:create }
+produit_delete:
+    pattern:  /produit/delete/{id}
+    defaults: { _controller:EspritDemoBundle:Produit:delete }
+produit_update:
+    pattern:  /produit/update/{id}
+    defaults: { _controller:EspritDemoBundle:Produit:update }    
 
+client:
+    pattern:  /client
+    defaults: { _controller:EspritDemoBundle:Client:index }
+client_show:
+    pattern:  /client/show/{id}
+    defaults: { _controller:EspritDemoBundle:Client:show }
+client_edit:
+    pattern:  /client/edit/{id}
+    defaults: { _controller:EspritDemoBundle:Client:edit }
+    
+client_new:
+    pattern:  /client/new
+    defaults: { _controller:EspritDemoBundle:Client:new }
+client_create:
+    pattern:  /client/create
+    defaults: { _controller:EspritDemoBundle:Client:create }
+client_delete:
+    pattern:  /client/delete/{id}
+    defaults: { _controller:EspritDemoBundle:Client:delete }
+client_update:
+    pattern:  /client/update/{id}
+    defaults: { _controller:EspritDemoBundle:Client:update }    
 EspritDemoBundle_administrateur:
     resource: "@EspritDemoBundle/Resources/config/routing/administrateur.yml"
     prefix:   /administrateur
-EspritDemoBundle_client:
-    resource: "@EspritDemoBundle/Resources/config/routing/client.yml"
-    prefix:   /client
-    
-EspritDemoBundle_prestataire:
-    resource: "@EspritDemoBundle/Resources/config/routing/prestataire.yml"
-    prefix:   /prestataire
-EspritDemoBundle_panier:
-    resource: "@EspritDemoBundle/Resources/config/routing/panier.yml"
-    prefix:   /panier
-EspritDemoBundle_produit:
-    resource: "@EspritDemoBundle/Resources/config/routing/produit.yml"
-    prefix:   /produit
+
+
+
 

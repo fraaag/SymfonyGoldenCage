@@ -2856,7 +2856,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>536672771755f</argument>
+            <argument>5368086cb4575</argument>
           </service>
         </argument>
       </argument>
@@ -3126,7 +3126,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>536672771755f</argument>
+            <argument>5368086cb4575</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3511,7 +3511,6 @@
         <argument key="dbname">goldencage2</argument>
         <argument key="user">root</argument>
         <argument key="password">null</argument>
-        <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>
       <argument type="service">
@@ -3539,6 +3538,14 @@
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
           <argument type="service" id="service_container"/>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="Doctrine\DBAL\Event\Listeners\MysqlSessionInit" public="false">
+                <tag name="doctrine.event_subscriber" connection="default"/>
+                <argument>UTF8</argument>
+              </service>
+            </argument>
+          </call>
           <call method="addEventSubscriber">
             <argument type="service">
               <service class="FOS\UserBundle\Doctrine\Orm\UserListener" public="false">

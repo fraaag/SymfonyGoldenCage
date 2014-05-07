@@ -149,9 +149,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            // Home
-            if ($pathinfo === '/home') {
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeAction',  '_route' => 'Home',);
+            if (0 === strpos($pathinfo, '/home')) {
+                // Home
+                if ($pathinfo === '/home') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeAction',  '_route' => 'Home',);
+                }
+
+                // Home_prestataire
+                if ($pathinfo === '/homeprestataire') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeprestataireAction',  '_route' => 'Home_prestataire',);
+                }
+
             }
 
         }
@@ -164,6 +172,123 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // liste_prest
         if ($pathinfo === '/liste_prest') {
             return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::liste_prestAction',  '_route' => 'liste_prest',);
+        }
+
+        if (0 === strpos($pathinfo, '/pr')) {
+            if (0 === strpos($pathinfo, '/prestataire')) {
+                // prestataire
+                if ($pathinfo === '/prestataire') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::indexAction',  '_route' => 'prestataire',);
+                }
+
+                // prestataire_show
+                if (0 === strpos($pathinfo, '/prestataire/show') && preg_match('#^/prestataire/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'prestataire_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::showAction',));
+                }
+
+                // prestataire_edit
+                if (0 === strpos($pathinfo, '/prestataire/edit') && preg_match('#^/prestataire/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'prestataire_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::editAction',));
+                }
+
+                // prestataire_new
+                if ($pathinfo === '/prestataire/new') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::newAction',  '_route' => 'prestataire_new',);
+                }
+
+                // prestataire_create
+                if ($pathinfo === '/prestataire/create') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::createAction',  '_route' => 'prestataire_create',);
+                }
+
+                // prestataire_delete
+                if (0 === strpos($pathinfo, '/prestataire/delete') && preg_match('#^/prestataire/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'prestataire_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::deleteAction',));
+                }
+
+                // prestataire_update
+                if (0 === strpos($pathinfo, '/prestataire/update') && preg_match('#^/prestataire/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'prestataire_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\PrestataireController::updateAction',));
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/produit')) {
+                // produit
+                if ($pathinfo === '/produit') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::indexAction',  '_route' => 'produit',);
+                }
+
+                // produit_show
+                if (0 === strpos($pathinfo, '/produit/show') && preg_match('#^/produit/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::showAction',));
+                }
+
+                // produit_edit
+                if (0 === strpos($pathinfo, '/produit/edit') && preg_match('#^/produit/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::editAction',));
+                }
+
+                // produit_new
+                if ($pathinfo === '/produit/new') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::newAction',  '_route' => 'produit_new',);
+                }
+
+                // produit_create
+                if ($pathinfo === '/produit/create') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::createAction',  '_route' => 'produit_create',);
+                }
+
+                // produit_delete
+                if (0 === strpos($pathinfo, '/produit/delete') && preg_match('#^/produit/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::deleteAction',));
+                }
+
+                // produit_update
+                if (0 === strpos($pathinfo, '/produit/update') && preg_match('#^/produit/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::updateAction',));
+                }
+
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/client')) {
+            // client
+            if ($pathinfo === '/client') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::indexAction',  '_route' => 'client',);
+            }
+
+            // client_show
+            if (0 === strpos($pathinfo, '/client/show') && preg_match('#^/client/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::showAction',));
+            }
+
+            // client_edit
+            if (0 === strpos($pathinfo, '/client/edit') && preg_match('#^/client/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::editAction',));
+            }
+
+            // client_new
+            if ($pathinfo === '/client/new') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::newAction',  '_route' => 'client_new',);
+            }
+
+            // client_create
+            if ($pathinfo === '/client/create') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::createAction',  '_route' => 'client_create',);
+            }
+
+            // client_delete
+            if (0 === strpos($pathinfo, '/client/delete') && preg_match('#^/client/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::deleteAction',));
+            }
+
+            // client_update
+            if (0 === strpos($pathinfo, '/client/update') && preg_match('#^/client/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::updateAction',));
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/administrateur')) {
@@ -223,126 +348,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::deleteAction',));
             }
             not_administrateur_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/client')) {
-            // client
-            if (rtrim($pathinfo, '/') === '/client') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'client');
-                }
-
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::indexAction',  '_route' => 'client',);
-            }
-
-            // client_show
-            if (preg_match('#^/client/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::showAction',));
-            }
-
-            // client_new
-            if ($pathinfo === '/client/new') {
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::newAction',  '_route' => 'client_new',);
-            }
-
-            // client_create
-            if ($pathinfo === '/client/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_client_create;
-                }
-
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::createAction',  '_route' => 'client_create',);
-            }
-            not_client_create:
-
-            // client_edit
-            if (preg_match('#^/client/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::editAction',));
-            }
-
-            // client_update
-            if (preg_match('#^/client/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_client_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::updateAction',));
-            }
-            not_client_update:
-
-            // client_delete
-            if (preg_match('#^/client/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_client_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ClientController::deleteAction',));
-            }
-            not_client_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/produit')) {
-            // produit
-            if (rtrim($pathinfo, '/') === '/produit') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'produit');
-                }
-
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::indexAction',  '_route' => 'produit',);
-            }
-
-            // produit_show
-            if (preg_match('#^/produit/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::showAction',));
-            }
-
-            // produit_new
-            if ($pathinfo === '/produit/new') {
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::newAction',  '_route' => 'produit_new',);
-            }
-
-            // produit_create
-            if ($pathinfo === '/produit/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_produit_create;
-                }
-
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::createAction',  '_route' => 'produit_create',);
-            }
-            not_produit_create:
-
-            // produit_edit
-            if (preg_match('#^/produit/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::editAction',));
-            }
-
-            // produit_update
-            if (preg_match('#^/produit/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_produit_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::updateAction',));
-            }
-            not_produit_update:
-
-            // produit_delete
-            if (preg_match('#^/produit/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_produit_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\ProduitController::deleteAction',));
-            }
-            not_produit_delete:
 
         }
 

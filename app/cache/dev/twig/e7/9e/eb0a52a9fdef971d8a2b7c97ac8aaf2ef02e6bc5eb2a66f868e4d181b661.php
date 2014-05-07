@@ -7,16 +7,18 @@ class __TwigTemplate_e79eeb0a52a9fdef971d8a2b7c97ac8aaf2ef02e6bc5eb2a66f868e4d18
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = $this->env->loadTemplate("EspritDemoBundle::layout.html.twig");
 
         $this->blocks = array(
+            'title' => array($this, 'block_title'),
+            'nav1' => array($this, 'block_nav1'),
             'body' => array($this, 'block_body'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::base.html.twig";
+        return "EspritDemoBundle::layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -25,12 +27,39 @@ class __TwigTemplate_e79eeb0a52a9fdef971d8a2b7c97ac8aaf2ef02e6bc5eb2a66f868e4d18
     }
 
     // line 3
-    public function block_body($context, array $blocks = array())
+    public function block_title($context, array $blocks = array())
     {
         // line 4
-        echo "<h1>Produit list</h1>
+        echo "Liste des produits
+";
+    }
 
-    <table class=\"records_list\">
+    // line 6
+    public function block_nav1($context, array $blocks = array())
+    {
+        // line 7
+        echo "                            <ul class=\"menu\">
+                                <li><a class=\"active\"  href=\"";
+        // line 8
+        echo $this->env->getExtension('routing')->getPath("produit");
+        echo "\">Produits</a></li>
+                                    <li><a href=\"";
+        // line 9
+        echo $this->env->getExtension('routing')->getPath("prestataire");
+        echo "\">Espace perso</a></li>
+                                   
+                            </ul>
+                            
+  ";
+    }
+
+    // line 14
+    public function block_body($context, array $blocks = array())
+    {
+        // line 15
+        echo "<h1 style=\"margin-left:450px   \">Liste des produits</h1>
+
+<table style=\"margin-left:350px \" class=\"records_list\">
         <thead>
             <tr>
                 <th>Nomproduit</th>
@@ -38,57 +67,54 @@ class __TwigTemplate_e79eeb0a52a9fdef971d8a2b7c97ac8aaf2ef02e6bc5eb2a66f868e4d18
                 <th>Coutproduit</th>
                 <th>Coutsolde</th>
                 <th>Descriptionproduit</th>
-                <th>Id</th>
-                <th>Actions</th>
+               <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 19
+        // line 29
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "entities"));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 20
+            // line 30
             echo "            <tr>
                 <td><a href=\"";
-            // line 21
+            // line 31
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "nomproduit"), "html", null, true);
             echo "</a></td>
                 <td>";
-            // line 22
+            // line 32
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "photo"), "html", null, true);
             echo "</td>
                 <td>";
-            // line 23
+            // line 33
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "coutproduit"), "html", null, true);
             echo "</td>
                 <td>";
-            // line 24
+            // line 34
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "coutsolde"), "html", null, true);
             echo "</td>
                 <td>";
-            // line 25
+            // line 35
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "descriptionproduit"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 26
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "entity"), "id"), "html", null, true);
-            echo "</td>
-                <td>
+              ";
+            // line 37
+            echo "                <td>
                 <ul>
                     <li>
                         <a href=\"";
-            // line 30
+            // line 40
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_show", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">show</a>
+            echo "\">Voir</a>
                     </li>
                     <li>
                         <a href=\"";
-            // line 33
+            // line 43
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("produit_edit", array("id" => $this->getAttribute($this->getContext($context, "entity"), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">Modifier</a>
                     </li>
                 </ul>
                 </td>
@@ -98,17 +124,17 @@ class __TwigTemplate_e79eeb0a52a9fdef971d8a2b7c97ac8aaf2ef02e6bc5eb2a66f868e4d18
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 49
         echo "        </tbody>
     </table>
 
         <ul>
         <li>
             <a href=\"";
-        // line 44
+        // line 54
         echo $this->env->getExtension('routing')->getPath("produit_new");
         echo "\">
-                Create a new entry
+                Ajouter un nouveau produit
             </a>
         </li>
     </ul>
@@ -127,6 +153,6 @@ class __TwigTemplate_e79eeb0a52a9fdef971d8a2b7c97ac8aaf2ef02e6bc5eb2a66f868e4d18
 
     public function getDebugInfo()
     {
-        return array (  109 => 44,  102 => 39,  90 => 33,  84 => 30,  77 => 26,  73 => 25,  69 => 24,  65 => 23,  61 => 22,  55 => 21,  52 => 20,  48 => 19,  31 => 4,  28 => 3,);
+        return array (  135 => 54,  128 => 49,  116 => 43,  110 => 40,  105 => 37,  101 => 35,  97 => 34,  93 => 33,  89 => 32,  83 => 31,  80 => 30,  76 => 29,  60 => 15,  57 => 14,  48 => 9,  44 => 8,  41 => 7,  38 => 6,  33 => 4,  30 => 3,);
     }
 }

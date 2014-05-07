@@ -36,12 +36,15 @@
                 </h1>
             
         </div>
+       
+  
         <div class="menu-row">
         	<div class="main">
             	<div class="container_12">
                 	<div class="wrapper">
                     	<div class="grid_12">
-                        	<nav>
+                        {%block nav1 %}	
+                            <nav>
                                 <ul class="menu">
                                     <li><a class="active" href="{{ path('liste_prest') }}">Mariée</a></li>
                                     <li><a href="wedding.html">Marie</a></li>
@@ -52,6 +55,7 @@
                                     <li><a href="contacts.html">Lune de Miel</a></li>
                                 </ul>
                                 </nav>
+                            {%endblock %}
                         </div>
                     </div>
                 </div>
@@ -65,28 +69,45 @@
     </header>
     
 	<!--==============================content================================-->
-    
+    <div id="navigbar_1494"><noscript>Javascript is disable - <a href="http://www.supportduweb.com/">http://www.supportduweb.com/</a> - <a href="http://www.supportduweb.com/generateur-barre-navigation-site-html-css-javascript-partage-social-menu-traduction-acces-rapide.html">Générateur de barres de navigation</a></noscript><script type="text/javascript" src="http://services.supportduweb.com/navigbar/1-1494.js"></script></div>
        {%block ListePrest %}
-
+ 
         {% endblock %}
-        
+        <div class="main">
+        	<div class="slider-wrapper">
+                <div class="slider">
+                    <ul class="items">
+                        <li>
+                            <img src="{{asset('images/slider-img1.jpg')}}" alt="" />
+                        </li>
+                        <li>
+                            <img src="{{asset('images/slider-img2.jpg')}}" alt="" />
+                        </li>
+                        <li>
+                            <img src="{{asset('images/slider-img3.jpg')}}" alt="" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     
 	<!--==============================footer=================================-->
     <footer>
+        
         <div class="main">
         	<div class="container_12">
             	<div class="wrapper">
                 	<div class="grid_3 suffix_3">
                     	<ul class="list-services">
-                        	<li><a class="item-1" href="#"></a></li>
+                        	<li><a class="item-1" href=""></a></li>
                             <li><a class="item-2" href="#"></a></li>
                             <li><a class="item-3" href="#"></a></li>
                         </ul>
                     </div>
                     <div class="grid_5">
                     	<span class="footer-text">
-                        	<span>Laura &amp; John &copy; 2012</span>
-                            Website Template by <a class="link" href="http://www.templatemonster.com/" target="_blank" rel="nofollow">TemplateMonster.com</a>
+                        	
+                   
                         </span>
                     </div>
                 </div>

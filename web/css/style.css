@@ -118,7 +118,7 @@ h1 {
 /***** menu *****/
 .menu-row {
 	width:100%;
-	padding:1px 0 5px;
+	padding:1px 0 50px;
 	background:url(../images/menu-row-tail.png) center top repeat-x;
 }
 	#page1 .menu-row {margin-bottom:22px;}

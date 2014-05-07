@@ -44,7 +44,7 @@ class PrestataireController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('produit_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('prestataire_show', array('id' => $entity->getId())));
         }
 
         return $this->render('EspritDemoBundle:Prestataire:new.html.twig', array(

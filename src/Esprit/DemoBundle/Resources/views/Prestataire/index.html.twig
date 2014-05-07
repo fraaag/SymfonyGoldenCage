@@ -24,7 +24,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('produit_show', { 'id': entity.id }) }}">{{ entity.adresse }}</a></td>
+                <td><a href="{{ path('prestataire_show', { 'id': entity.id }) }}">{{ entity.adresse }}</a></td>
                 <td>{{ entity.adressmail }}</td>
                 <td>{{ entity.fax }}</td>
                 <td>{{ entity.gsm }}</td>
@@ -39,10 +39,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('prestataire_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('prestataire_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -53,7 +53,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('produit_new') }}">
+            <a href="{{ path('prestataire_new') }}">
                 Create a new entry
             </a>
         </li>

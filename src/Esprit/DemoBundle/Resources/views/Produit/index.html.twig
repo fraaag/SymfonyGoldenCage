@@ -1,9 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends "EspritDemoBundle::layout.html.twig" %}
 
+{% block title %}
+Liste des produits
+{%endblock%}
+{%block nav1 %}
+                            <ul class="menu">
+                                <li><a class="active"  href="{{ path('produit')}}">Produits</a></li>
+                                    <li><a href="{{ path('prestataire')}}">Espace perso</a></li>
+                                   
+                            </ul>
+                            
+  {%endblock%}
 {% block body -%}
-    <h1>Produit list</h1>
+<h1 style="margin-left:450px   ">Liste des produits</h1>
 
-    <table class="records_list">
+<table style="margin-left:350px " class="records_list">
         <thead>
             <tr>
                 <th>Nomproduit</th>
@@ -11,8 +22,7 @@
                 <th>Coutproduit</th>
                 <th>Coutsolde</th>
                 <th>Descriptionproduit</th>
-                <th>Id</th>
-                <th>Actions</th>
+               <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +33,14 @@
                 <td>{{ entity.coutproduit }}</td>
                 <td>{{ entity.coutsolde }}</td>
                 <td>{{ entity.descriptionproduit }}</td>
-                <td>{{ entity.id }}</td>
+              {#  <td>{{ entity.id }}</td>#}
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
                 </ul>
                 </td>
@@ -42,7 +52,7 @@
         <ul>
         <li>
             <a href="{{ path('produit_new') }}">
-                Create a new entry
+                Ajouter un nouveau produit
             </a>
         </li>
     </ul>
