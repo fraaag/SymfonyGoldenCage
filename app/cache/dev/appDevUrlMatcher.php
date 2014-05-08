@@ -135,6 +135,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // mail_mail_homepage
+        if ($pathinfo === '/admin/contact') {
+            return array (  '_controller' => 'Mail\\MailBundle\\Controller\\DefaultController::indexAction',  '_route' => 'mail_mail_homepage',);
+        }
+
         if (0 === strpos($pathinfo, '/h')) {
             if (0 === strpos($pathinfo, '/hello')) {
                 // my_app_user_homepage
@@ -149,24 +154,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            if (0 === strpos($pathinfo, '/home')) {
-                // Home
-                if ($pathinfo === '/home') {
-                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeAction',  '_route' => 'Home',);
-                }
-
-                // Home_prestataire
-                if ($pathinfo === '/homeprestataire') {
-                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeprestataireAction',  '_route' => 'Home_prestataire',);
-                }
-
+            // Home_prestataire
+            if ($pathinfo === '/homeprestataire') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeprestataireAction',  '_route' => 'Home_prestataire',);
             }
 
         }
 
         // admin_gest_prest
-        if ($pathinfo === '/gest_prest') {
+        if ($pathinfo === '/admin/gest_prest') {
             return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::gest_prestAction',  '_route' => 'admin_gest_prest',);
+        }
+
+        // admin_send_mail
+        if ($pathinfo === '/send') {
+            return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\MailController::indexAction',  '_route' => 'admin_send_mail',);
         }
 
         // liste_prest
@@ -349,6 +351,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_administrateur_delete:
 
+        }
+
+        // Home
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'Home');
+            }
+
+            return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::homeAction',  '_route' => 'Home',);
         }
 
         if (0 === strpos($pathinfo, '/log')) {

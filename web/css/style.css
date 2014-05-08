@@ -601,3 +601,8 @@ footer {
 	padding-right:43px;
 }
 	.footer-text span {display:block;}
+        .style-table{
+            border: 2px solid #000;
+            
+            
+        }
