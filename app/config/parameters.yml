@@ -6,10 +6,9 @@ parameters:
     database_name: goldencage1
     database_user: root
     database_password: esprit+hotix=apt
-    mailer_encryption:  ssl
     mailer_transport: gmail
     mailer_host: smtp.gmail.com
     mailer_user: goldencage.3a14@gmail.com
-    mailer_password: "esprit3A14"
+    mailer_password: esprit3A14
     locale: fr
     secret: ThisTokenIsNotSoSecretChangeIt

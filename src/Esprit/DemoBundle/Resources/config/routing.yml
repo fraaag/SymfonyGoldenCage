@@ -87,7 +87,9 @@ client_update:
 EspritDemoBundle_administrateur:
     resource: "@EspritDemoBundle/Resources/config/routing/administrateur.yml"
     prefix:   /administrateur
-
+stat:
+    pattern:  /client/stat
+    defaults: { _controller:EspritDemoBundle:Stat:chart } 
 
 
 

@@ -353,6 +353,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // stat
+        if ($pathinfo === '/client/stat') {
+            return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\StatController::chartAction',  '_route' => 'stat',);
+        }
+
         // Home
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
