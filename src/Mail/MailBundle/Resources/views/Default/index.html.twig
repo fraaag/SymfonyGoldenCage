@@ -1,0 +1,22 @@
+{% extends "EspritDemoBundle::LayoutAdmin.html.twig" %}
+{% block title %}Contact{% endblock %}
+{%block body %}
+    <form method="post" action="{{ path('mail_mail_homepage')}}">
+        <table>
+            <tr>
+                <td> Email : </td>
+                <td><input type="text" name="adr"   > </td>
+            </tr>
+            <tr>
+                <td> Message :</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <textArea name="msg"   > </textArea>
+                </td>
+        </table>
+   
+    <input type="submit" value="Envoyer"  class="btn1" /> 
+    </form>
+{% endblock %}

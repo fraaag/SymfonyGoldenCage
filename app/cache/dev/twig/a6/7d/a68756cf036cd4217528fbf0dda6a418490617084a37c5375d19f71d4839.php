@@ -7,7 +7,7 @@ class __TwigTemplate_a67da68756cf036cd4217528fbf0dda6a418490617084a37c5375d19f71
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("EspritDemoBundle:Default:home.html.twig");
+        $this->parent = $this->env->loadTemplate("EspritDemoBundle::LayoutAdmin.html.twig");
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
@@ -17,7 +17,7 @@ class __TwigTemplate_a67da68756cf036cd4217528fbf0dda6a418490617084a37c5375d19f71
 
     protected function doGetParent(array $context)
     {
-        return "EspritDemoBundle:Default:home.html.twig";
+        return "EspritDemoBundle::LayoutAdmin.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -35,7 +35,12 @@ class __TwigTemplate_a67da68756cf036cd4217528fbf0dda6a418490617084a37c5375d19f71
     public function block_body($context, array $blocks = array())
     {
         // line 5
-        echo "    aaaa
+        echo "    <h1>Liste des prestataire</h1><br>
+    <table>
+        <tr>
+            
+        </tr>
+    </table>
 ";
     }
 

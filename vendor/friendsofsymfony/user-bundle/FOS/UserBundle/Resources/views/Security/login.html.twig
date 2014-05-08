@@ -2,12 +2,13 @@
 {% block title %}Authentification{% endblock %}
 
 {% trans_default_domain 'FOSUserBundle' %}
-
 {% block body %}
     {% if error %}
         <div>{{ error|trans }}</div>
     {% endif %}
+       
 
+       
 <form action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     <table border="0" width="30%">
@@ -29,6 +30,6 @@
                        value="{{ 'security.login.submit'|trans }}" /></td>
         </tr>
     </table>
-  
+  <a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a>
 </form>
 {% endblock body %}

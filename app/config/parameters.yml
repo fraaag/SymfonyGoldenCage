@@ -6,9 +6,10 @@ parameters:
     database_name: goldencage2
     database_user: root
     database_password: null
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_encryption:  ssl
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: goldencage.3a14@gmail.com
+    mailer_password: "esprit3A14"
     locale: fr
     secret: ThisTokenIsNotSoSecretChangeIt

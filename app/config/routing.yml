@@ -1,3 +1,7 @@
+mail_mail:
+    resource: "@MailMailBundle/Resources/config/routing.yml"
+    prefix:   /
+
 my_app_user:
     resource: "@MyAppUserBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,7 +9,9 @@ my_app_user:
 esprit_demo:
     resource: "@EspritDemoBundle/Resources/config/routing.yml"
     prefix:   /
-    
+Home:
+    pattern:  /
+    defaults: { _controller: EspritDemoBundle:Default:home }    
 fos_user_security:
 
  resource: "@FOSUserBundle/Resources/config/routing/security.xml"

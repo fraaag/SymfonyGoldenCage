@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Esprit\DemoBundle\EspritDemoBundle(),
             new MyApp\UserBundle\MyAppUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Mail\MailBundle\MailMailBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

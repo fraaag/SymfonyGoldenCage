@@ -8,8 +8,11 @@ Home_prestataire:
     pattern:  /homeprestataire
     defaults: { _controller: EspritDemoBundle:Default:homeprestataire }
 admin_gest_prest:
-    pattern:  /gest_prest
+    pattern:  /admin/gest_prest
     defaults: { _controller: EspritDemoBundle:Default:gest_prest }
+admin_send_mail:
+    pattern:  /send
+    defaults: { _controller: EspritDemoBundle:Mail:index }
 liste_prest:
     pattern:  /liste_prest
     defaults: { _controller: EspritDemoBundle:Default:liste_prest }
