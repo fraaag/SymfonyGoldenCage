@@ -1,12 +1,14 @@
+{% extends "EspritDemoBundle::layout.html.twig" %}
 
 
 {%block nav1 %}
-                            <ul class="menu">
-                                <li><a   href="{{ path('produit')}}">Produits</a></li>
-                                    <li<a href="{{ path('prestataire_show')}}"><a>Espace perso</a></li>
-                                   
+                             <ul class="menu">
+                                <li><a  href="{{ path('produit')}}">Produits</a></li>
+                                    <li><a href="{{ path('prestataire')}}">Espace perso</a></li>
+                                    <li><a>Contact </a></li>
                             </ul>
-                              </ul>
+                            
+                              
   {%endblock%}
  
  {%block ListePrest %}
