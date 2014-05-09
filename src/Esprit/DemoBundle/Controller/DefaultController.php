@@ -2,7 +2,11 @@
 
 namespace Esprit\DemoBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use Esprit\DemoBundle\Entity\Prestataire;
+use Esprit\DemoBundle\Form\PrestataireType;
 
 class DefaultController extends Controller
 {
@@ -22,8 +26,13 @@ class DefaultController extends Controller
     }
     public function gest_prestAction()
     {
-        //nom bundle:folder li ta7t l views:vue
-        return $this->render('EspritDemoBundle:Admin:gest_prest.html.twig', array());
+         $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('EspritDemoBundle:Prestataire')->findAll();
+
+        return $this->render('EspritDemoBundle:Admin:index.html.twig', array(
+            'entities' => $entities,
+        ));
     }
     public function liste_prestAction()
     {

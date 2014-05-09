@@ -20,7 +20,11 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "ob/highcharts-bundle": "1.*"
+        "ob/highcharts-bundle": "1.*",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "sonata-project/jquery-bundle": "1.8.x-dev"
+        
     },
     "scripts": {
         "post-install-cmd": [

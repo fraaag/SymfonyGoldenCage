@@ -1,0 +1,13 @@
+## YAML Template.
+---
+services:
+    sonata.admin.post:
+        class: MyApp\UserBundle\Admin\PostAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
+        arguments:
+            - ~
+            - MyApp\UserBundle\Entity\Post
+            - ~
+        calls:
+            - [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]

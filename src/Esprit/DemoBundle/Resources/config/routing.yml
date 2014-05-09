@@ -10,6 +10,9 @@ Home_prestataire:
 admin_gest_prest:
     pattern:  /admin/gest_prest
     defaults: { _controller: EspritDemoBundle:Default:gest_prest }
+admin_default:
+    pattern:  /admin
+    defaults: { _controller: EspritDemoBundle:Default:gest_prest }
 admin_send_mail:
     pattern:  /send
     defaults: { _controller: EspritDemoBundle:Mail:index }
@@ -88,7 +91,7 @@ EspritDemoBundle_administrateur:
     resource: "@EspritDemoBundle/Resources/config/routing/administrateur.yml"
     prefix:   /administrateur
 stat:
-    pattern:  /client/stat
+    pattern:  /admin/stat
     defaults: { _controller:EspritDemoBundle:Stat:chart } 
 
 

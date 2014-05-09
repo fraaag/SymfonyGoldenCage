@@ -161,9 +161,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // admin_gest_prest
-        if ($pathinfo === '/admin/gest_prest') {
-            return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::gest_prestAction',  '_route' => 'admin_gest_prest',);
+        if (0 === strpos($pathinfo, '/admin')) {
+            // admin_gest_prest
+            if ($pathinfo === '/admin/gest_prest') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::gest_prestAction',  '_route' => 'admin_gest_prest',);
+            }
+
+            // admin_default
+            if ($pathinfo === '/admin') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\DefaultController::gest_prestAction',  '_route' => 'admin_default',);
+            }
+
         }
 
         // admin_send_mail
@@ -293,69 +301,72 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/administrateur')) {
-            // administrateur
-            if (rtrim($pathinfo, '/') === '/administrateur') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'administrateur');
+        if (0 === strpos($pathinfo, '/admin')) {
+            if (0 === strpos($pathinfo, '/administrateur')) {
+                // administrateur
+                if (rtrim($pathinfo, '/') === '/administrateur') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'administrateur');
+                    }
+
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::indexAction',  '_route' => 'administrateur',);
                 }
 
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::indexAction',  '_route' => 'administrateur',);
-            }
-
-            // administrateur_show
-            if (preg_match('#^/administrateur/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::showAction',));
-            }
-
-            // administrateur_new
-            if ($pathinfo === '/administrateur/new') {
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::newAction',  '_route' => 'administrateur_new',);
-            }
-
-            // administrateur_create
-            if ($pathinfo === '/administrateur/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_administrateur_create;
+                // administrateur_show
+                if (preg_match('#^/administrateur/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_show')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::showAction',));
                 }
 
-                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::createAction',  '_route' => 'administrateur_create',);
-            }
-            not_administrateur_create:
-
-            // administrateur_edit
-            if (preg_match('#^/administrateur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::editAction',));
-            }
-
-            // administrateur_update
-            if (preg_match('#^/administrateur/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_administrateur_update;
+                // administrateur_new
+                if ($pathinfo === '/administrateur/new') {
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::newAction',  '_route' => 'administrateur_new',);
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::updateAction',));
-            }
-            not_administrateur_update:
+                // administrateur_create
+                if ($pathinfo === '/administrateur/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_administrateur_create;
+                    }
 
-            // administrateur_delete
-            if (preg_match('#^/administrateur/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_administrateur_delete;
+                    return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::createAction',  '_route' => 'administrateur_create',);
+                }
+                not_administrateur_create:
+
+                // administrateur_edit
+                if (preg_match('#^/administrateur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_edit')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::editAction',));
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::deleteAction',));
+                // administrateur_update
+                if (preg_match('#^/administrateur/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_administrateur_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_update')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::updateAction',));
+                }
+                not_administrateur_update:
+
+                // administrateur_delete
+                if (preg_match('#^/administrateur/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_administrateur_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'administrateur_delete')), array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\AdministrateurController::deleteAction',));
+                }
+                not_administrateur_delete:
+
             }
-            not_administrateur_delete:
 
-        }
+            // stat
+            if ($pathinfo === '/admin/stat') {
+                return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\StatController::chartAction',  '_route' => 'stat',);
+            }
 
-        // stat
-        if ($pathinfo === '/client/stat') {
-            return array (  '_controller' => 'Esprit\\DemoBundle\\Controller\\StatController::chartAction',  '_route' => 'stat',);
         }
 
         // Home
@@ -528,6 +539,89 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
+
+        if (0 === strpos($pathinfo, '/adminn')) {
+            // sonata_admin_redirect
+            if (rtrim($pathinfo, '/') === '/adminn') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'sonata_admin_redirect');
+                }
+
+                return array (  '_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController::redirectAction',  'route' => 'sonata_admin_dashboard',  'permanent' => 'true',  '_route' => 'sonata_admin_redirect',);
+            }
+
+            // sonata_admin_dashboard
+            if ($pathinfo === '/adminn/dashboard') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::dashboardAction',  '_route' => 'sonata_admin_dashboard',);
+            }
+
+            if (0 === strpos($pathinfo, '/adminn/core')) {
+                // sonata_admin_retrieve_form_element
+                if ($pathinfo === '/adminn/core/get-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:retrieveFormFieldElementAction',  '_route' => 'sonata_admin_retrieve_form_element',);
+                }
+
+                // sonata_admin_append_form_element
+                if ($pathinfo === '/adminn/core/append-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:appendFormFieldElementAction',  '_route' => 'sonata_admin_append_form_element',);
+                }
+
+                // sonata_admin_short_object_information
+                if (0 === strpos($pathinfo, '/adminn/core/get-short-object-description') && preg_match('#^/adminn/core/get\\-short\\-object\\-description(?:\\.(?P<_format>html|json))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sonata_admin_short_object_information')), array (  '_controller' => 'sonata.admin.controller.admin:getShortObjectDescriptionAction',  '_format' => 'html',));
+                }
+
+                // sonata_admin_set_object_field_value
+                if ($pathinfo === '/adminn/core/set-object-field-value') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:setObjectFieldValueAction',  '_route' => 'sonata_admin_set_object_field_value',);
+                }
+
+            }
+
+            // sonata_admin_search
+            if ($pathinfo === '/adminn/search') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::searchAction',  '_route' => 'sonata_admin_search',);
+            }
+
+            if (0 === strpos($pathinfo, '/adminn/myapp/user/post')) {
+                // admin_myapp_user_post_list
+                if ($pathinfo === '/adminn/myapp/user/post/list') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_list',  '_route' => 'admin_myapp_user_post_list',);
+                }
+
+                // admin_myapp_user_post_create
+                if ($pathinfo === '/adminn/myapp/user/post/create') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_create',  '_route' => 'admin_myapp_user_post_create',);
+                }
+
+                // admin_myapp_user_post_batch
+                if ($pathinfo === '/adminn/myapp/user/post/batch') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_batch',  '_route' => 'admin_myapp_user_post_batch',);
+                }
+
+                // admin_myapp_user_post_edit
+                if (preg_match('#^/adminn/myapp/user/post/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_myapp_user_post_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_edit',));
+                }
+
+                // admin_myapp_user_post_delete
+                if (preg_match('#^/adminn/myapp/user/post/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_myapp_user_post_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_delete',));
+                }
+
+                // admin_myapp_user_post_show
+                if (preg_match('#^/adminn/myapp/user/post/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_myapp_user_post_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_show',));
+                }
+
+                // admin_myapp_user_post_export
+                if ($pathinfo === '/adminn/myapp/user/post/export') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.post',  '_sonata_name' => 'admin_myapp_user_post_export',  '_route' => 'admin_myapp_user_post_export',);
+                }
+
+            }
+
+        }
 
         // _welcome
         if (rtrim($pathinfo, '/') === '') {

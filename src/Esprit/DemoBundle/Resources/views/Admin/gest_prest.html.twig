@@ -2,10 +2,74 @@
 {% block title %}Gestion Prestataire{% endblock %}
 
 {% block body %}
-    <h1>Liste des prestataire</h1><br>
-    <table>
-        <tr>
-            
-        </tr>
+    <h1>Prestataire</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Adressmail</th>
+                <td>{{ entity.adressmail }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ entity.fax }}</td>
+            </tr>
+            <tr>
+                <th>Gsm</th>
+                <td>{{ entity.gsm }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ entity.login }}</td>
+            </tr>
+            <tr>
+                <th>Motdepasse</th>
+                <td>{{ entity.motdepasse }}</td>
+            </tr>
+            <tr>
+                <th>Nomsociete</th>
+                <td>{{ entity.nomsociete }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ entity.photo }}</td>
+            </tr>
+            <tr>
+                <th>Presentation</th>
+                <td>{{ entity.presentation }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ entity.siteweb }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ entity.tel }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
     </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('prestataire') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('prestataire_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
+
 {% endblock %}

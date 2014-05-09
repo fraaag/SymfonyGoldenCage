@@ -27,12 +27,26 @@ class __TwigTemplate_97c989d9f8f507a7fbb692e107a13930489ebdecc800760897360544bfd
             request = function(url, onSuccess, onError, payload, options) {
                 var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
                 options = options || {};
+                options.maxTries = options.maxTries || 0;
                 xhr.open(options.method || 'GET', url, true);
                 xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
                 xhr.onreadystatechange = function(state) {
-                    if (4 === xhr.readyState && 200 === xhr.status) {
+                    if (4 !== xhr.readyState) {
+                        return null;
+                    }
+
+                    if (xhr.status == 404 && options.maxTries > 1) {
+                        setTimeout(function(){
+                            options.maxTries--;
+                            request(url, onSuccess, onError, payload, options);
+                        }, 500);
+
+                        return null;
+                    }
+
+                    if (200 === xhr.status) {
                         (onSuccess || noop)(xhr);
-                    } else if (4 === xhr.readyState && xhr.status != 200) {
+                    } else {
                         (onError || noop)(xhr);
                     }
                 };
@@ -93,6 +107,7 @@ class __TwigTemplate_97c989d9f8f507a7fbb692e107a13930489ebdecc800760897360544bfd
                             (onSuccess || noop)(xhr, el);
                         },
                         function(xhr) { (onError || noop)(xhr, el); },
+                        '',
                         options
                     );
                 }
@@ -128,6 +143,6 @@ class __TwigTemplate_97c989d9f8f507a7fbb692e107a13930489ebdecc800760897360544bfd
 
     public function getDebugInfo()
     {
-        return array (  91 => 35,  83 => 30,  79 => 29,  75 => 28,  70 => 26,  66 => 25,  62 => 24,  50 => 15,  46 => 14,  32 => 6,  30 => 5,  26 => 3,  19 => 1,  241 => 86,  238 => 85,  233 => 78,  230 => 77,  216 => 49,  209 => 46,  205 => 32,  202 => 31,  197 => 4,  152 => 88,  150 => 85,  143 => 80,  141 => 77,  135 => 73,  130 => 71,  123 => 70,  117 => 67,  113 => 66,  108 => 65,  106 => 64,  99 => 59,  97 => 46,  82 => 33,  80 => 31,  61 => 15,  57 => 14,  53 => 13,  49 => 12,  38 => 7,  34 => 6,  29 => 4,  24 => 2,  42 => 12,  37 => 5,  33 => 4,  28 => 3,);
+        return array (  91 => 35,  83 => 30,  79 => 29,  75 => 28,  70 => 26,  66 => 25,  62 => 24,  50 => 15,  46 => 14,  30 => 5,  26 => 3,  19 => 1,  241 => 86,  238 => 85,  233 => 78,  230 => 77,  216 => 49,  209 => 46,  205 => 32,  202 => 31,  197 => 4,  152 => 88,  150 => 85,  143 => 80,  141 => 77,  135 => 73,  130 => 71,  123 => 70,  117 => 67,  113 => 66,  108 => 65,  106 => 64,  99 => 59,  97 => 46,  82 => 33,  80 => 31,  61 => 15,  57 => 14,  49 => 12,  42 => 12,  38 => 7,  34 => 6,  24 => 2,  65 => 20,  59 => 17,  53 => 13,  43 => 8,  37 => 6,  32 => 6,  29 => 4,);
     }
 }

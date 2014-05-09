@@ -1,0 +1,47 @@
+{% extends 'EspritDemoBundle::LayoutAdmin.html.twig'%}
+
+{% block body %}
+    <h1>Prestataire list</h1>
+    <table class="records_list" >
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Motdepasse</th>
+                <th>Adresse</th>
+                <th>Adressmail</th>
+                <th>Fax</th>
+                <th>Gsm</th>
+                
+                
+                <th>Nomsociete</th>
+                <th>Photo</th>
+                <th>Siteweb</th>
+                <th>Tel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.login }}</td>
+                <td>{{ entity.motdepasse }}</td>
+                <td><a href="{{ path('prestataire_show', { 'id': entity.id }) }}">{{ entity.adresse }}</a></td>
+                <td>{{ entity.adressmail }}</td>
+                <td>{{ entity.fax }}</td>
+                <td>{{ entity.gsm }}</td>
+                <td>{{ entity.nomsociete }}</td>
+                <td>{{ entity.photo }}</td>
+                <td>{{ entity.siteweb }}</td>
+                <td>{{ entity.tel }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="">Valider</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

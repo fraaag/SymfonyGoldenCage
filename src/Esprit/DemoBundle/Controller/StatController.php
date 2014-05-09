@@ -12,6 +12,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
  
 class StatController extends Controller
 {
+    
     public function chartAction()
     {
         // Chart
@@ -24,6 +25,7 @@ class StatController extends Controller
             'dataLabels'    => array('enabled' => false),
             'showInLegend'  => true
         ));
+        
         $data = array(
             array('Firefox', 45.0),
             array('IE', 26.8),
