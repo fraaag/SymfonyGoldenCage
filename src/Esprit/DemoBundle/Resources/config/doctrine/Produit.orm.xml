@@ -9,7 +9,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="nomproduit" type="string" column="NomProduit" length="30" nullable="false"/>
-    <field name="photo" type="blob" column="Photo" nullable="false"/>
+    <field name="photo" type="string" column="Photo" length="200" nullable="false"/>
     <field name="coutproduit" type="float" column="CoutProduit" precision="10" scale="0" nullable="false"/>
     <field name="coutsolde" type="float" column="CoutSolde" precision="10" scale="0" nullable="true"/>
     <field name="descriptionproduit" type="string" column="DescriptionProduit" length="2000" nullable="false"/>

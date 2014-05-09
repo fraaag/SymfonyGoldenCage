@@ -3,17 +3,18 @@
 
 {%block nav1 %}
                              <ul class="menu">
+                                <li><a class="active" href="{{ path('Home_prestataire')}}">Acceuil</a></li>
                                 <li><a  href="{{ path('produit')}}">Produits</a></li>
-                                    <li><a href="{{ path('prestataire') }}">Espace perso</a></li>
+                                    <li><a href="{{ path('prestataire_show', { 'id': "1" }) }}">Espace perso</a></li>
                                     <li><a>Contact </a></li>
                             </ul>
                             
-                              
-  {%endblock%}
- 
- {%block ListePrest %}
+  
      
                               
   {%endblock %}    
                               
-                              
+  {%block body%}
+
+
+  {% endblock %}                    

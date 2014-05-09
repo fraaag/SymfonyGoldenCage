@@ -5,20 +5,20 @@ Liste des produits
 {%endblock%}
 {%block nav1 %}
                             <ul class="menu">
+                                <li><a href="{{ path('Home_prestataire')}}">Acceuil</a></li>
                                 <li><a class="active"  href="{{ path('produit')}}">Produits</a></li>
-                                    <li><a href="{{ path('prestataire')}}">Espace perso</a></li>
+                                <li><a href="{{ path('prestataire_show', { 'id': "1" }) }}">Espace perso</a></li>
                                    
                             </ul>
                             
   {%endblock%}
 {% block body -%}
-<h1 style="margin-left:450px   ">Liste des produits</h1>
+<h2 style="margin-left:550px">Liste des produits</h2>
 
-<table border="1" style="margin-left:350px" class="style-table" >
+<table  cellspacing="0" >
         <thead>
             <tr>
                 <th>Nomproduit</th>
-                <th>Photo</th>
                 <th>Coutproduit</th>
                 <th>Coutsolde</th>
                 <th>Descriptionproduit</th>
@@ -27,9 +27,9 @@ Liste des produits
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
+      
+            <tr  class="khaled">
                 <td><a href="{{ path('produit_show', { 'id': entity.id }) }}">{{ entity.nomproduit }}</a></td>
-                <td>{{ entity.photo }}</td>
                 <td>{{ entity.coutproduit }}</td>
                 <td>{{ entity.coutsolde }}</td>
                 <td>{{ entity.descriptionproduit }}</td>
@@ -37,14 +37,15 @@ Liste des produits
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('produit_show', { 'id': entity.id }) }}">Voir</a>
+                        <a href="{{ path('produit_show', { 'id': entity.id }) }}"><img src="{{asset('images/voir.png')}}" alt="" />details</a>
                     </li>
                     <li>
-                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}">Modifier</a>
+                        <a href="{{ path('produit_edit', { 'id': entity.id }) }}"><img src="{{asset('images/modifier.png')}}" alt="" />Modifier</a>
                     </li>
                 </ul>
                 </td>
             </tr>
+        
         {% endfor %}
         </tbody>
     </table>
@@ -54,6 +55,7 @@ Liste des produits
             <a href="{{ path('produit_new') }}">
                 Ajouter un nouveau produit
             </a>
+           
         </li>
     </ul>
     {% endblock %}

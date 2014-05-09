@@ -12,7 +12,6 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
  
 class StatController extends Controller
 {
-    
     public function chartAction()
     {
         // Chart
@@ -25,15 +24,13 @@ class StatController extends Controller
             'dataLabels'    => array('enabled' => false),
             'showInLegend'  => true
         ));
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('EspritDemoBundle:Prestataire')->findAll();
+        $data=array();
+        foreach($entities as $e){
+          $data.add($e.integer);
+        }
         
-        $data = array(
-            array('Firefox', 45.0),
-            array('IE', 26.8),
-            array('Chrome', 12.8),
-            array('Safari', 8.5),
-            array('Opera', 6.2),
-            array('Others', 0.7),
-        );
         $ob->series(array(array('type' => 'pie','name' => 'Browser share', 'data' => $data)));
 
         return $this->render('EspritDemoBundle:Default:Statistique.html.twig', array(

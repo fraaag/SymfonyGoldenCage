@@ -1,5 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends "EspritDemoBundle::layout.html.twig" %}
 
+{% block title %}
+Espace Personnel
+{%endblock%}
+{%block nav1 %}
+                             <ul class="menu">
+                                <li><a  href="{{ path('Home_prestataire')}}">Acceuil</a></li>
+                                <li><a   href="{{ path('produit')}}">Produits</a></li>
+                                    <li><a class="active" href="{{ path('prestataire_show', { 'id': "1" }) }}">Espace perso</a></li>
+                                    <li><a>Contact </a></li>
+                            </ul>
+                            
+  
+     
+                              
+  {%endblock %}
 {% block body -%}
     <h1>Prestataire</h1>
 
@@ -49,10 +64,10 @@
                 <th>Tel</th>
                 <td>{{ entity.tel }}</td>
             </tr>
-            <tr>
+           {# <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
-            </tr>
+            </tr> #}
         </tbody>
     </table>
 

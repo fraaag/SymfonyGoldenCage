@@ -1,7 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends "EspritDemoBundle::layout.html.twig" %}
+
+{% block title %}
+{{entity.nomproduit}}
+{%endblock%}
+{%block nav1 %}
+                            <ul class="menu">
+                                <li><a href="{{ path('Home_prestataire')}}">Acceuil</a></li>
+                                <li><a class="active"  href="{{ path('produit')}}">Produits</a></li>
+                                <li><a href="{{ path('prestataire_show', { 'id': "1" }) }}">Espace perso</a></li>
+                                   
+                            </ul>
+                            
+  {%endblock%}
 
 {% block body -%}
-    <h1>Produit</h1>
+<h2 style="padding-left:280px ">Details de {{entity.nomproduit}}</h2>
 
     <table class="record_properties">
         <tbody>
@@ -11,7 +24,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td>{{ entity.photo }}</td>
+                <td class="khaled"><img src="{{ entity.photo }}"/></td>
             </tr>
             <tr>
                 <th>Coutproduit</th>
@@ -25,24 +38,22 @@
                 <th>Descriptionproduit</th>
                 <td>{{ entity.descriptionproduit }}</td>
             </tr>
-            <tr>
+           {# <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
-            </tr>
+            </tr>#}
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
+       
         <a href="{{ path('produit') }}">
-            Back to the list
+           <img src="{{asset('images/voir.png')}}" alt="" />
         </a>
-    </li>
-    <li>
+    
         <a href="{{ path('produit_edit', { 'id': entity.id }) }}">
             Edit
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+   
+    {{ form(delete_form) }}
+
 {% endblock %}

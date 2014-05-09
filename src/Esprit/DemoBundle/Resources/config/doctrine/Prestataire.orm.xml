@@ -14,7 +14,7 @@
     <field name="login" type="string" column="Login" length="30" nullable="false"/>
     <field name="motdepasse" type="string" column="MotDePasse" length="30" nullable="false"/>
     <field name="nomsociete" type="string" column="NomSociete" length="30" nullable="false"/>
-    <field name="photo" type="blob" column="Photo" nullable="false"/>
+    <field name="photo" type="string" column="Photo" length="200" nullable="false"/>
     <field name="presentation" type="string" column="Presentation" length="2000" nullable="false"/>
     <field name="siteweb" type="string" column="SiteWeb" length="50" nullable="false"/>
     <field name="tel" type="integer" column="Tel" nullable="false"/>
