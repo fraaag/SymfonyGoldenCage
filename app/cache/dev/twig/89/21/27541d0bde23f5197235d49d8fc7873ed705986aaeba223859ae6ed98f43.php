@@ -11,7 +11,7 @@ class __TwigTemplate_892127541d0bde23f5197235d49d8fc7873ed705986aaeba223859ae6ed
 
         $this->blocks = array(
             'nav1' => array($this, 'block_nav1'),
-            'ListePrest' => array($this, 'block_ListePrest'),
+            'body' => array($this, 'block_body'),
         );
     }
 
@@ -30,27 +30,33 @@ class __TwigTemplate_892127541d0bde23f5197235d49d8fc7873ed705986aaeba223859ae6ed
     {
         // line 5
         echo "                             <ul class=\"menu\">
-                                <li><a  href=\"";
+                                <li><a class=\"active\" href=\"";
         // line 6
+        echo $this->env->getExtension('routing')->getPath("Home_prestataire");
+        echo "\">Acceuil</a></li>
+                                <li><a  href=\"";
+        // line 7
         echo $this->env->getExtension('routing')->getPath("produit");
         echo "\">Produits</a></li>
                                     <li><a href=\"";
-        // line 7
-        echo $this->env->getExtension('routing')->getPath("prestataire");
+        // line 8
+        echo $this->env->getExtension('routing')->getPath("prestataire_show", array("id" => "1"));
         echo "\">Espace perso</a></li>
                                     <li><a>Contact </a></li>
                             </ul>
                             
+  
+     
                               
   ";
     }
 
-    // line 14
-    public function block_ListePrest($context, array $blocks = array())
+    // line 17
+    public function block_body($context, array $blocks = array())
     {
-        // line 15
-        echo "     
-                              
+        // line 18
+        echo "
+
   ";
     }
 
@@ -66,6 +72,6 @@ class __TwigTemplate_892127541d0bde23f5197235d49d8fc7873ed705986aaeba223859ae6ed
 
     public function getDebugInfo()
     {
-        return array (  52 => 15,  49 => 14,  39 => 7,  35 => 6,  32 => 5,  29 => 4,);
+        return array (  58 => 18,  55 => 17,  43 => 8,  39 => 7,  35 => 6,  32 => 5,  29 => 4,);
     }
 }
